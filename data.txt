@@ -1,0 +1,87 @@
+PROFILE SUMMARY
+Vicky is an IT enthusiast with a user-focused and data-driven mindset, relentlessly challenging the status quo. With four years of full-time work and study experience, her journey began in Taiwan, where she embarked on a technology career while completing her degree in software engineering. This journey led her to Canada, where she is currently a data scientist intern, pursuing a master's degree in IT. She thrives on pushing herself beyond limits and has worked in diverse domains, including e-commerce, HR information systems, and chronic disease projects. Vicky's work blends technical skills with business insights, fostering real innovation.
+
+ACHIEVEMENTS
+Technical Contributions: Vicky's technical prowess extended to creating impactful technical content for a global audience, enhancing learning experiences in Data Science, Machine Learning, and Software Development. Additionally, she applied Generative AI to optimize sales processes and collaborated with Snowflake for content promotion.
+Efficient Data Management: Within the SaaS sector, Vicky excelled at streamlining data migration processes for over 300 companies. Her proficiency in web scraping and SQL optimization proved invaluable for internal data access and analytics. Furthermore, she successfully reduced churn rates by 3% through diligent troubleshooting, user trend analysis, and the creation of user guides. These achievements underline her expertise in harnessing technology for data management and process optimization.
+E-commerce Revenue Boost: In an E-commerce environment, Vicky's leadership in a government subsidy project resulted in a remarkable 569% revenue increase. She achieved this by implementing a Python-based web scraper to automate daily updates on government subsidies. This not only reduced manual work but also ensured real-time information for the team, contributing significantly to revenue growth.
+
+STRENGTHS AND ADVANTAGES
+- Proficient in data analysis, AI, and web development.
+- Creative and agile problem solver.
+
+WEAKNESSES AND DISADVANTAGES
+Vicky's strong drive for achieving results occasionally led her to prioritize outcomes over nurturing a growth mindset. However, she recognized the importance of learning from each experience and preventing the same failures in the future. She also believes that fostering a growth mindset can contribute to a more open-minded and collaborative teamwork environment.
+
+LATEST PROJECTS
+The most recent project she've completed is the development of this website using watsonx and Streamlit. Its primary purpose is to serve as a central hub for potential employers to explore her portfolio, providing insights into her work and projects.
+Additionally, she's currently dedicating her efforts to a research thesis focused on innovative optimization within the field of computer vision. Her ultimate goal is to leverage the outcomes of this research to drive advancements in the realm of medical image analysis in the future.
+
+SALARY EXPECTATION (EXPECTED SALARY)
+Seeking an annual salary of one million.
+
+AVAILABILITY TO WORK
+Vicky will be available to work from May 2024.
+
+CONTACT
+Address: Toronto, Ontario
+Phone number: 123-456-7890
+Email: vicky.kuo.contact@gmail.com
+
+SKILLS
+- Coding: Python, SQL, Docker, HTML, Java
+- Business Intelligence: Redash, Tableau, Looker
+- Project Management Software: Trello, Jira, Confluence, Asana, Monday.com, Zenhub
+- CRM Software: Hubspot, Zendesk
+- Log Management: Kibana
+- API Testing Tool: Swagger
+- Product Analytics: Amplitude
+- Prototyping and UML: Figma
+- Localization Tool: Localise
+- Computer Skills: MS Office
+
+EDUCATION BACKGROUND
+MA in Information Systems and Technology
+- York University, Toronto, Canada
+- Sep 2022 - Expected Spring 2024
+- Cumulative GPA: 3.8 / 4.0
+- Award: York Fellowship (2022)
+BSc in Software Engineering
+- Fu Jen Catholic University, Taipei, Taiwan
+- Sep 2018 - Jun 2021
+- Cumulative GPA: 3.78 / 4.0
+- Awards: Academic Excellence (2018, 2019 & 2021)
+
+WORK EXPERIENCE
+Data Scientist Intern
+- IBM, Toronto, Canada
+- May 2023 - Present
+- Tech Stack: Generative AI, Web Development, Machine Learning
+- Details and Responsibilities: Creating technical content, developing Generative AI projects, and optimizing sales and customer support processes.
+
+Founding Member and Full Stack Developer
+- Terranova Health Network, Toronto, Canada
+- May 2023 – Present
+- Tech Stack: Web Development
+- Details and Responsibilities: Co-creating digital healthcare software and crafting pitch decks for chronic disease patients.
+
+Research and Teaching Assistant
+- York University, Toronto, Canada
+- Sep 2022 – Present
+- Tech Stack: Python, Tableau, SQL
+- Details and Responsibilities: Analyzing complex datasets, streamlining grading processes, and utilizing machine learning techniques.
+
+Implementation Consultant
+- Swingvy (SaaS-based HRIS company), Taipei, Taiwan
+- Dec 2020 – Aug 2022
+- Tech Stack: Jira, CRM, BI, HTML, SQL, Prototyping, Python
+- Details and Responsibilities: Technical expertise for 300+ companies, data migration, UX enhancement, and churn rate reduction.
+
+CERTIFICATES
+- AWS Certified Cloud Practitioner
+- IBM Data Analysis and Visualization Foundations
+- IBM Data Analyst Capstone Project
+- IBM Databases and SQL for Data Science with Python
+
+REFERENCE
+References are available upon request.
