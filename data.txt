@@ -24,9 +24,9 @@ AVAILABILITY TO WORK
 Vicky will be available to work from May 2024.
 
 CONTACT
-Address: Toronto, Ontario
-Phone number: 123-456-7890
-Email: vicky.kuo.contact@gmail.com
+- Address: Toronto, Ontario
+- Phone number: 123-456-7890
+- Email: vicky.kuo.contact@gmail.com
 
 SKILLS
 - Coding: Python, SQL, Docker, HTML, Java
