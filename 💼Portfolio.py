@@ -186,14 +186,14 @@ with st.container():
             height: 15px;
             width: 15px;
             margin: 0 2px;
-            background-color: #6F6F6F;
+            background-color: #eaeaea;
             border-radius: 50%;
             display: inline-block;
             transition: background-color 0.6s ease;
             }
 
             .active {
-            background-color: #eaeaea;
+            background-color: #6F6F6F;
             }
 
             /* Fading animation */
