@@ -57,7 +57,7 @@ Data Scientist Intern
 - IBM, Toronto, Canada
 - May 2023 - Present
 - Tech Stack: Generative AI, Web Development, Machine Learning
-- Details and Responsibilities: Creating technical content, developing Generative AI projects, and optimizing sales and customer support processes.
+- Details and Responsibilities: Creating technical content (projects, labs, and write-ups) for Data Science/Machine Learning and Software Development on the Skills Network Team and Coursera, assisting in enhancing the learning experience for a diverse learners population worldwide.
 
 Founding Member and Full Stack Developer
 - Terranova Health Network, Toronto, Canada
@@ -69,13 +69,13 @@ Research and Teaching Assistant
 - York University, Toronto, Canada
 - Sep 2022 – Present
 - Tech Stack: Python, Tableau, SQL
-- Details and Responsibilities: Analyzing complex datasets, streamlining grading processes, and utilizing machine learning techniques.
+- Details and Responsibilities: Utilized numerical optimization algorithms and machine learning techniques to analyze complex datasets, including medical data from Sunnybrook Hospital, yielding actionable insights.
 
 Implementation Consultant
 - Swingvy (SaaS-based HRIS company), Taipei, Taiwan
 - Dec 2020 – Aug 2022
 - Tech Stack: Jira, CRM, BI, HTML, SQL, Prototyping, Python
-- Details and Responsibilities: Technical expertise for 300+ companies, data migration, UX enhancement, and churn rate reduction.
+- Details and Responsibilities: Led technical expertise for over 300 companies, with a focus on innovation in HR process optimization. This involved streamlining data migration, accelerating UX with rapid MVP delivery, and achieving a 3% churn rate reduction.
 
 CERTIFICATES
 - AWS Certified Cloud Practitioner
