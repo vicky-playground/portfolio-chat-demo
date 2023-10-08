@@ -60,70 +60,71 @@ with st.sidebar:
         
     st.caption("© Made by Vicky Kuo 2023. All rights reserved.")
 
-# Check for GPU availability and set the appropriate device for computation.
-DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
-
-# Global variables
-llm_hub = None
-embeddings = None
-
-Watsonx_API = "uvnQIfnjPk2Jpszy0hAvr80xCUAudclZsltCi3gYxAVu"
-Project_id= "177ab670-c7d0-4f34-894f-228297d644d9"
-
-# Function to initialize the language model and its embeddings
-def init_llm():
-    global llm_hub, embeddings
+with st.spinner("Initiating the AI assistant. Please hold..."):
+    # Check for GPU availability and set the appropriate device for computation.
+    DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
     
-    params = {
-        GenParams.MAX_NEW_TOKENS: 1024, # The maximum number of tokens that the model can generate in a single run.
-        GenParams.MIN_NEW_TOKENS: 1,   # The minimum number of tokens that the model should generate in a single run.
-        GenParams.DECODING_METHOD: DecodingMethods.SAMPLE, # The method used by the model for decoding/generating new tokens. In this case, it uses the sampling method.
-        GenParams.TEMPERATURE: 0.7,   # A parameter that controls the randomness of the token generation. A lower value makes the generation more deterministic, while a higher value introduces more randomness.
-        GenParams.TOP_K: 50,          # The top K parameter restricts the token generation to the K most likely tokens at each step, which can help to focus the generation and avoid irrelevant tokens.
-        GenParams.TOP_P: 1            # The top P parameter, also known as nucleus sampling, restricts the token generation to a subset of tokens that have a cumulative probability of at most P, helping to balance between diversity and quality of the generated text.
-    }
+    # Global variables
+    llm_hub = None
+    embeddings = None
     
-    credentials = {
-        'url': "https://us-south.ml.cloud.ibm.com",
-        'apikey' : Watsonx_API
-    }
-
-    model_id = ModelTypes.LLAMA_2_70B_CHAT
+    Watsonx_API = "uvnQIfnjPk2Jpszy0hAvr80xCUAudclZsltCi3gYxAVu"
+    Project_id= "177ab670-c7d0-4f34-894f-228297d644d9"
     
-    model = Model(
-        model_id= model_id,
-        credentials=credentials,
-        params=params,
-        project_id=Project_id)
-
-    llm_hub = WatsonxLLM(model=model)
-
-    #Initialize embeddings using a pre-trained model to represent the text data.
-    embeddings = HuggingFaceInstructEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2", model_kwargs={"device": DEVICE}
+    # Function to initialize the language model and its embeddings
+    def init_llm():
+        global llm_hub, embeddings
+        
+        params = {
+            GenParams.MAX_NEW_TOKENS: 1024, # The maximum number of tokens that the model can generate in a single run.
+            GenParams.MIN_NEW_TOKENS: 1,   # The minimum number of tokens that the model should generate in a single run.
+            GenParams.DECODING_METHOD: DecodingMethods.SAMPLE, # The method used by the model for decoding/generating new tokens. In this case, it uses the sampling method.
+            GenParams.TEMPERATURE: 0.7,   # A parameter that controls the randomness of the token generation. A lower value makes the generation more deterministic, while a higher value introduces more randomness.
+            GenParams.TOP_K: 50,          # The top K parameter restricts the token generation to the K most likely tokens at each step, which can help to focus the generation and avoid irrelevant tokens.
+            GenParams.TOP_P: 1            # The top P parameter, also known as nucleus sampling, restricts the token generation to a subset of tokens that have a cumulative probability of at most P, helping to balance between diversity and quality of the generated text.
+        }
+        
+        credentials = {
+            'url': "https://us-south.ml.cloud.ibm.com",
+            'apikey' : Watsonx_API
+        }
+    
+        model_id = ModelTypes.LLAMA_2_70B_CHAT
+        
+        model = Model(
+            model_id= model_id,
+            credentials=credentials,
+            params=params,
+            project_id=Project_id)
+    
+        llm_hub = WatsonxLLM(model=model)
+    
+        #Initialize embeddings using a pre-trained model to represent the text data.
+        embeddings = HuggingFaceInstructEmbeddings(
+            model_name="sentence-transformers/all-MiniLM-L6-v2", model_kwargs={"device": DEVICE}
+        )
+    
+    init_llm()
+    
+    # load the file
+    documents = SimpleDirectoryReader(input_files=["data.txt"]).load_data()
+    
+    # LLMPredictor: to generate the text response (Completion)
+    llm_predictor = LLMPredictor(
+            llm=llm_hub
     )
-
-init_llm()
-
-# load the file
-documents = SimpleDirectoryReader(input_files=["data.txt"]).load_data()
-
-# LLMPredictor: to generate the text response (Completion)
-llm_predictor = LLMPredictor(
-        llm=llm_hub
-)
-                                
-# Hugging Face models can be supported by using LangchainEmbedding to convert text to embedding vector	
-embed_model = LangchainEmbedding(embeddings)
-#embed_model = LangchainEmbedding(HuggingFaceEmbeddings())
-
-# ServiceContext: to encapsulate the resources used to create indexes and run queries    
-service_context = ServiceContext.from_defaults(
-        llm_predictor=llm_predictor, 
-        embed_model=embed_model
-)      
-# build index
-index = GPTVectorStoreIndex.from_documents(documents, service_context=service_context)
+                                    
+    # Hugging Face models can be supported by using LangchainEmbedding to convert text to embedding vector	
+    embed_model = LangchainEmbedding(embeddings)
+    #embed_model = LangchainEmbedding(HuggingFaceEmbeddings())
+    
+    # ServiceContext: to encapsulate the resources used to create indexes and run queries    
+    service_context = ServiceContext.from_defaults(
+            llm_predictor=llm_predictor, 
+            embed_model=embed_model
+    )      
+    # build index
+    index = GPTVectorStoreIndex.from_documents(documents, service_context=service_context)
 
 def ask_bot(user_query):
 
