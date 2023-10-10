@@ -64,7 +64,7 @@ with col1:
 
 import streamlit.components.v1 as components
 
-def ChangeButtonColour(widget_label, background_color='transparent'):
+def change_button_color(widget_label, background_color='transparent'):
     htmlstr = f"""
         <script>
             var elements = window.parent.document.querySelectorAll('button');
@@ -77,7 +77,7 @@ def ChangeButtonColour(widget_label, background_color='transparent'):
         """
     components.html(f"{htmlstr}", height=0, width=0)
 
-ChangeButtonColour('Chat with My AI Assistant', '#10B981') 
+change_button_color('Chat with My AI Assistant', '#10B981') 
             
 with col2:
     profile = Image.open("images/profile.png")
