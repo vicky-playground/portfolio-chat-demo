@@ -43,21 +43,6 @@ input[type=message], input[type=email], input[type=text], textarea {
   background-color: black
 }
 
-/* Hide Streamlit Branding */
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-header {visibility: hidden;}
-
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #001d6c;
-  color: white;
-  text-align: center;
-}
-
 
 div.stButton > button:first-child {
   min-width: 45px;
