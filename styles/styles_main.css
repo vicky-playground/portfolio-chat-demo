@@ -60,3 +60,17 @@ div.stButton > button:hover {
               linear-gradient(0deg, #D1D5DB, #D1D5DB);
   border: 1px solid #D1D5DB
 }
+
+div.stButton > button.css-d382i5.e1ewe7hr10:first-child {
+    min-width: 45px;
+    background: linear-gradient(0deg, #E5E7EB, #E5E7EB),
+                linear-gradient(0deg, #D1D5DB, #D1D5DB);
+    border: 1px solid #D1D5DB;
+}
+
+div.stButton > button.css-d382i5.e1ewe7hr10:hover {
+    background: linear-gradient(0deg, #34D399, #34D399),
+                linear-gradient(0deg, #10B981, #10B981);
+    border: 1px solid #10B981;
+}
+
