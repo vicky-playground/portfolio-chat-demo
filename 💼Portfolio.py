@@ -2,6 +2,30 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 from  PIL import Image
 
+import streamlit as st
+
+# Inline CSS via st.markdown
+st.markdown(
+    """
+    <style>
+        /* Style all buttons */
+        button {
+            color: red;
+        }
+        /* Try to target a specific button – this might require adjusting based on your app’s structure */
+        button:nth-of-type(1) {
+            background-color: limegreen;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# Streamlit UI Elements
+st.button("Button 1")
+st.button("Button 2")
+
+
 st.set_page_config(page_title='Template' ,layout="wide",initial_sidebar_state="auto", page_icon='👧🏻') # always show the sidebar
 
 def local_css(file_name):
