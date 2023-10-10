@@ -48,7 +48,7 @@ with st.container():
 
 import streamlit.components.v1 as components
 
-def ChangeButtonColour(widget_label, background_color='transparent'):
+def ChangeButtonColour(widget_label, background_color):
     htmlstr = f"""
         <script>
             var elements = window.parent.document.querySelectorAll('button');
@@ -70,7 +70,7 @@ with col1:
     col_1, col_2, temp = st.columns([0.35,0.2,0.45])
     with col_1:
         btn1 = st.button("Chat with My AI Assistant")
-        ChangeButtonColour(btn1,linear-gradient(0deg, #E5E7EB, #E5E7EB),linear-gradient(0deg, #D1D5DB, #D1D5DB))
+        ChangeButtonColour(btn1,linear-gradient('0deg', '#E5E7EB', '#E5E7EB'),linear-gradient('0deg', '#D1D5DB', '#D1D5DB'))
         if btn1:
             switch_page("AI_Assistant_Chat")
     with col_2:
