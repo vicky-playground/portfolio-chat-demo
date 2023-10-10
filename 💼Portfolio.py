@@ -67,6 +67,7 @@ with col2:
 
             
 with st.container():
+    st.write("")
     st.subheader('🚀 Project Showcase')
 
     projects = [
