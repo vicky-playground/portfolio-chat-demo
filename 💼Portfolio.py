@@ -51,6 +51,9 @@ import streamlit.components.v1 as components
 import streamlit as st
 import streamlit.components.v1 as components
 
+import streamlit as st
+import streamlit.components.v1 as components
+
 def ChangeButtonColour(widget_label, font_color, background_color='transparent'):
     htmlstr = f"""
         <script>
@@ -73,6 +76,8 @@ cols[3].button('fourth button', key='b4')
 
 ChangeButtonColour('second button', 'red', 'blue') # button txt to find, colour to assign
 ChangeButtonColour('fourth button', '#c19af5', '#354b75') # button txt to find, colour to assign
+
+
 with col1:
     hero("Hi, I'm Vicky Kuo👋", "A Tech Educator and AI Enthusiast at cognitiveclass.ai")
     st.write("")
