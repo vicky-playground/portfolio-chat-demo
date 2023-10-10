@@ -33,7 +33,6 @@ with st.sidebar:
         
     st.caption("© Made by Vicky Kuo 2023. All rights reserved.")
 
-import streamlit as st
 import requests
 
 from utils.constants import *
@@ -47,6 +46,21 @@ def hero(content1, content2):
 with st.container():
     col1,col2 = st.columns([8,3])
 
+import streamlit.components.v1 as components
+
+def ChangeButtonColour(widget_label, background_color='transparent'):
+    htmlstr = f"""
+        <script>
+            var elements = window.parent.document.querySelectorAll('button');
+            for (var i = 0; i < elements.length; ++i) {{ 
+                if (elements[i].innerText == '{widget_label}') {{ 
+                    elements[i].style.background = '{background_color}'
+                }}
+            }}
+        </script>
+        """
+    components.html(f"{htmlstr}", height=0, width=0)
+
 with col1:
     hero("Hi, I'm Vicky Kuo👋", "A Tech Educator and AI Enthusiast at cognitiveclass.ai")
     st.write("")
@@ -56,6 +70,7 @@ with col1:
     col_1, col_2, temp = st.columns([0.35,0.2,0.45])
     with col_1:
         btn1 = st.button("Chat with My AI Assistant")
+        ChangeButtonColour(btn1,linear-gradient(0deg, #E5E7EB, #E5E7EB),linear-gradient(0deg, #D1D5DB, #D1D5DB))
         if btn1:
             switch_page("AI_Assistant_Chat")
     with col_2:
