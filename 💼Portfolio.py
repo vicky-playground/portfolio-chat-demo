@@ -46,37 +46,6 @@ def hero(content1, content2):
 with st.container():
     col1,col2 = st.columns([8,3])
 
-import streamlit.components.v1 as components
-
-import streamlit as st
-import streamlit.components.v1 as components
-
-import streamlit as st
-import streamlit.components.v1 as components
-
-def ChangeButtonColour(widget_label, background_color='transparent'):
-    htmlstr = f"""
-        <script>
-            var elements = window.parent.document.querySelectorAll('button');
-            for (var i = 0; i < elements.length; ++i) {{ 
-                if (elements[i].innerText == '{widget_label}') {{ 
-                    elements[i].style.background = '{background_color}'
-                }}
-            }}
-        </script>
-        """
-    components.html(f"{htmlstr}", height=0, width=0)
-
-cols = st.columns(4)
-cols[0].button('first button', key='b1')
-cols[1].button('second button', key='b2')
-cols[2].button('third button', key='b3')
-cols[3].button('fourth button', key='b4')
-
-ChangeButtonColour('second button', 'blue') # button txt to find, colour to assign
-ChangeButtonColour('fourth button', '#354b75') # button txt to find, colour to assign
-
-
 with col1:
     hero("Hi, I'm Vicky Kuo👋", "A Tech Educator and AI Enthusiast at cognitiveclass.ai")
     st.write("")
@@ -92,6 +61,23 @@ with col1:
         btn2 = st.button("My Resume")
         if btn2:
             switch_page("Resume")
+
+import streamlit.components.v1 as components
+
+def ChangeButtonColour(widget_label, background_color='transparent'):
+    htmlstr = f"""
+        <script>
+            var elements = window.parent.document.querySelectorAll('button');
+            for (var i = 0; i < elements.length; ++i) {{ 
+                if (elements[i].innerText == '{widget_label}') {{ 
+                    elements[i].style.background = '{background_color}'
+                }}
+            }}
+        </script>
+        """
+    components.html(f"{htmlstr}", height=0, width=0)
+
+ChangeButtonColour('My Resume', 'blue') 
             
 with col2:
     profile = Image.open("images/profile.png")
