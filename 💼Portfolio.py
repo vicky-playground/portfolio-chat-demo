@@ -77,7 +77,7 @@ def change_button_color(widget_label, background_color='transparent'):
         """
     components.html(f"{htmlstr}", height=0, width=0)
 
-change_button_color('Chat with My AI Assistant', '#10B981') 
+change_button_color('Chat with My AI Assistant', '#0cc789') 
             
 with col2:
     profile = Image.open("images/profile.png")
