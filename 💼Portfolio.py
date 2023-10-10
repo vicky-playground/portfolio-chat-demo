@@ -70,7 +70,14 @@ with col1:
     col_1, col_2, temp = st.columns([0.35,0.2,0.45])
     with col_1:
         btn1 = st.button("Chat with My AI Assistant")
-        ChangeButtonColour(btn1,'linear-gradient(0deg, #E5E7EB', #E5E7EB)')
+        cols = st.columns(4)
+        cols[0].button('first button', key='b1')
+        cols[1].button('second button', key='b2')
+        cols[2].button('third button', key='b3')
+        cols[3].button('fourth button', key='b4')
+
+        ChangeButtonColour('second button', 'blue') # button txt to find, colour to assign
+        ChangeButtonColour('fourth button', '#354b75') # button txt to find, colour to assign
         if btn1:
             switch_page("AI_Assistant_Chat")
     with col_2:
