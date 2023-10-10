@@ -77,7 +77,7 @@ def ChangeButtonColour(widget_label, background_color='transparent'):
         """
     components.html(f"{htmlstr}", height=0, width=0)
 
-ChangeButtonColour('My Resume', 'blue') 
+ChangeButtonColour('Chat with My AI Assistant', '#10B981') 
             
 with col2:
     profile = Image.open("images/profile.png")
