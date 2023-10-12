@@ -59,11 +59,6 @@ with st.sidebar:
         
         def clear_chat_history():
             welcome_msg = f"Hi! I'm {name}'s AI assistant, Buddy. How may I assist you today?"
-    
-            # Delete all the items in Session state
-            for key in st.session_state.keys():
-                del st.session_state[key]
-                
             st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
         col1.button('New Chat', on_click=clear_chat_history)
         
