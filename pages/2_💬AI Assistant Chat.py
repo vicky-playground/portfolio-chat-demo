@@ -18,10 +18,6 @@ def local_css(file_name):
         
 local_css("styles/styles_chat.css")
 
-# Delete all the items in Session state
-for key in st.session_state.keys():
-    del st.session_state[key]
-
 # get the variables from constants.py
 pronoun = info['Pronoun']
 name = info['Name']
