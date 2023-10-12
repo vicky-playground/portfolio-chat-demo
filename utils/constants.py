@@ -42,7 +42,8 @@ info = {
    "Project":"https://author.skills.network/instructors/vicky_kuo",
    "Medium":"https://medium.com/@vicky-note/about",
    "City":"Toronto, Canada",
-   "Resume": "https://drive.google.com/file/d/1e_trgOgzwYIY6eMSvjmyjgqBcCOdueZ1/view?usp=sharing"
+   "Resume": "https://drive.google.com/file/d/1e_trgOgzwYIY6eMSvjmyjgqBcCOdueZ1/view?usp=sharing",
+   "Email": "vicky.kuo.contact@gmail.com" 
 }
 
 embed_rss= {
