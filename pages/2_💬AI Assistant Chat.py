@@ -58,6 +58,7 @@ with st.sidebar:
 
     st.caption("© Made by Vicky Kuo 2023. All rights reserved.")
 
+# # Configure Azure OpenAI API
 with st.spinner("Initiating the AI assistant. Please hold..."):
     # Check for GPU availability and set the appropriate device for computation.
     DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
