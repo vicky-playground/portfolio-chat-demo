@@ -15,6 +15,7 @@ local_css("styles/styles_main.css")
 
 # get the variables from constants.py
 pronoun = info['Pronoun']
+full_name = info['Full_Name']
 
 # app sidebar
 with st.sidebar:
@@ -51,7 +52,7 @@ with st.container():
     col1,col2 = st.columns([8,3])
 
 with col1:
-    hero("Hi, I'm Vicky Kuo👋", "A Tech Educator and AI Enthusiast at cognitiveclass.ai")
+    hero(f"Hi, I'm {full_name}👋", {info["intro"]})
     st.write("")
     st.write(info['About'])
 
