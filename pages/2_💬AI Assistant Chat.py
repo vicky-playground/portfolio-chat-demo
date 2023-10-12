@@ -18,16 +18,7 @@ def local_css(file_name):
         
 local_css("styles/styles_chat.css")
 
-# get the variables from constants.py
-pronoun = info['Pronoun']
-name = info['Name']
-
-if "messages" not in st.session_state.keys():
-    welcome_msg = f"Hi! I'm {name}'s AI Assistant, Buddy. How may I assist you today?"
-    st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
-   
- 
-# app sidebar
+# App sidebar
 with st.sidebar:
     st.markdown("""
                 # Chat with my AI assistant
@@ -150,11 +141,21 @@ def ask_bot(user_query):
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Prompt for user input and save
+# Get the variables from constants.py
+pronoun = info['Pronoun']
+name = info['Name']
+
+# Initialize the chat history
+if "messages" not in st.session_state:
+    welcome_msg = f"Hi! I'm {name}'s AI Assistant, Buddy. How may I assist you today?"
+    st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
+   
+# After the user enters a message, append that message to the message history
 if prompt := st.chat_input("Your question"): # Prompt for user input and save to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
-    
-for message in st.session_state.messages: # Display the prior chat messages
+
+# Iterate through the message history and display each message
+for message in st.session_state.messages: 
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
