@@ -1,5 +1,6 @@
+
 import streamlit as st
-from utils.constants import *
+# Import necessary libraries
 import torch
 from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader, LLMPredictor, ServiceContext, LangchainEmbedding
 # Llamaindex also works with langchain framework to implement embeddings
@@ -18,31 +19,28 @@ def local_css(file_name):
         
 local_css("styles/styles_chat.css")
 
-# get the variables from constants.py
-pronoun = info['Pronoun']
-name = info['Name']
-
 if "messages" not in st.session_state.keys():
-    welcome_msg = f"Hi! I'm {name}'s AI Assistant, Buddy. How may I assist you today?"
+    welcome_msg = "Hi! I'm Vicky's AI Assistant, Buddy. How may I assist you today?"
     st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
    
  
-# app sidebar
+# App Sidebar
 with st.sidebar:
     st.markdown("""
                 # Chat with my AI assistant
                 """)
+
     with st.expander("Click here to see FAQs"):
         st.info(
-            f"""
-            - What are {pronoun} strengths and weaknesses?
-            - What is {pronoun} expected salary?
-            - What is {pronoun} latest project?
-            - When can {pronoun} start to work?
-            - Tell me about {pronoun} professional background
-            - What is {pronoun} skillset?
-            - What is {pronoun} contact?
-            - What are {pronoun} achievements?
+            """
+            - What are her strengths and weaknesses?
+            - What is her expected salary?
+            - What is her latest project?
+            - When can she start to work?
+            - Tell me about her professional background
+            - What is her skillset?
+            - What is her contact?
+            - What are her achievements?
             """
         )
     
@@ -57,11 +55,11 @@ with st.sidebar:
             mime='json',
         )
         def clear_chat_history():
-            welcome_msg = f"Hi! I'm {name}'s AI assistant, Buddy. How may I assist you today?"
+            welcome_msg = "Hi! I'm Vicky's AI assistant, Buddy. How may I assist you today?"
             st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
         col1.button('New Chat', on_click=clear_chat_history)
         
-    st.caption(f"© Made by Vicky Kuo 2023. All rights reserved.")
+    st.caption("© Made by Vicky Kuo 2023. All rights reserved.")
 
 with st.spinner("Initiating the AI assistant. Please hold..."):
     # Check for GPU availability and set the appropriate device for computation.
@@ -79,10 +77,10 @@ with st.spinner("Initiating the AI assistant. Please hold..."):
         global llm_hub, embeddings
         
         params = {
-            GenParams.MAX_NEW_TOKENS: 1024, # The maximum number of tokens that the model can generate in a single run.
+            GenParams.MAX_NEW_TOKENS: 512, # The maximum number of tokens that the model can generate in a single run.
             GenParams.MIN_NEW_TOKENS: 1,   # The minimum number of tokens that the model should generate in a single run.
             GenParams.DECODING_METHOD: DecodingMethods.SAMPLE, # The method used by the model for decoding/generating new tokens. In this case, it uses the sampling method.
-            GenParams.TEMPERATURE: 0.3,   # A parameter that controls the randomness of the token generation. A lower value makes the generation more deterministic, while a higher value introduces more randomness.
+            GenParams.TEMPERATURE: 0.7,   # A parameter that controls the randomness of the token generation. A lower value makes the generation more deterministic, while a higher value introduces more randomness.
             GenParams.TOP_K: 50,          # The top K parameter restricts the token generation to the K most likely tokens at each step, which can help to focus the generation and avoid irrelevant tokens.
             GenParams.TOP_P: 1            # The top P parameter, also known as nucleus sampling, restricts the token generation to a subset of tokens that have a cumulative probability of at most P, helping to balance between diversity and quality of the generated text.
         }
@@ -133,10 +131,10 @@ def ask_bot(user_query):
 
     global index
 
-    PROMPT_QUESTION = f"""You are Buddy, an AI assistant helping {name} to answer a question from a recruiter. 
-    You should keep answers succinct and without a starting "Buddy" or breakline.
-    If unsure, admit it politely and direct recruiters to {name} for more info. 
-    
+    PROMPT_QUESTION = """You are Buddy, an AI assistant dedicated to assisting Vicky in her job search by providing recruiters with relevant and concise information about her qualifications and achievements. 
+    Your goal is to support Vicky in presenting herself effectively to potential employers and promoting her candidacy for job opportunities.
+    If you do not know the answer, politely admit it and let recruiters know how to contact Vicky to get more information directly from her. 
+    Don't put "Buddy" or a breakline in the front of your answer.
     Human: {input}
     """
     
@@ -165,9 +163,9 @@ if st.session_state.messages[-1]["role"] != "assistant":
 
 # Suggested questions
 questions = [
-    f'What are {pronoun} strengths and weaknesses?',
-    f'What is {pronoun} expected salary?',
-    f'What is {pronoun} latest project?'
+    'What are her strengths and weaknesses?',
+    'What is her expected salary?',
+    'What is her latest project?'
 ]
 
 def send_button_ques(question):
