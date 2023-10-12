@@ -138,19 +138,19 @@ with st.container():
         <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            * {box-sizing: border-box;}
+            * {{box-sizing: border-box;}}
             .mySlides {display: none;}
-            img {vertical-align: middle;}
+            img {{vertical-align: middle;}}
 
             /* Slideshow container */
-            .slideshow-container {
+            .slideshow-container {{
             position: relative;
             margin: auto;
             width: 100%;
-            }
+            }}
 
             /* The dots/bullets/indicators */
-            .dot {
+            .dot {{
             height: 15px;
             width: 15px;
             margin: 0 2px;
@@ -158,27 +158,27 @@ with st.container():
             border-radius: 50%;
             display: inline-block;
             transition: background-color 0.6s ease;
-            }
+            }}
 
-            .active {
+            .active {{
             background-color: #6F6F6F;
-            }
+            }}
 
             /* Fading animation */
-            .fade {
+            .fade {{
             animation-name: fade;
             animation-duration: 1s;
-            }
+            }}
 
-            @keyframes fade {
+            @keyframes fade {{
             from {{opacity: .4}} 
             to {{opacity: 1}}
-            }
+            }}
 
             /* On smaller screens, decrease text size */
-            @media only screen and (max-width: 300px) {
+            @media only screen and (max-width: 300px) {{
             .text {{font-size: 11px}}
-            }
+            }}
             </style>
         </head>
         <body>
