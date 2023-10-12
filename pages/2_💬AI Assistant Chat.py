@@ -133,12 +133,12 @@ def ask_bot(user_query):
 
     global index
 
-    PROMPT_QUESTION = f"""You are Buddy, an AI assistant helping {name} to answer a question from a recruiter. 
-    You should keep answers both succinct and relevant without a starting "Buddy" or breakline.
-    If unsure, admit it politely and direct recruiters to {name} for more info. 
-    
+    PROMPT_QUESTION = """You are Buddy, an AI assistant dedicated to assisting Vicky in her job search by providing recruiters with relevant and concise information. 
+    If you do not know the answer, politely admit it and let recruiters know how to contact Vicky to get more information directly from her. 
+    Don't put "Buddy" or a breakline in the front of your answer.
     Human: {input}
     """
+    
     
     # query LlamaIndex and LLAMA_2_70B_CHAT for the AI's response
     output = index.as_query_engine().query(PROMPT_QUESTION.format(input=user_query))
