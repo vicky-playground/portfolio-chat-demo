@@ -139,7 +139,7 @@ with st.container():
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             * {{box-sizing: border-box;}}
-            .mySlides {display: none;}
+            .mySlides {{display: none;}}
             img {{vertical-align: middle;}}
 
             /* Slideshow container */
@@ -208,38 +208,38 @@ with st.container():
             let slideIndex = 0;
             showSlides();
 
-            function showSlides() {
+            function showSlides() {{
             let i;
             let slides = document.getElementsByClassName("mySlides");
             let dots = document.getElementsByClassName("dot");
-            for (i = 0; i < slides.length; i++) {
+            for (i = 0; i < slides.length; i++) {{
                 slides[i].style.display = "none";  
-            }
+            }}
             slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}    
-            for (i = 0; i < dots.length; i++) {
+            if (slideIndex > slides.length) {{slideIndex = 1}}    
+            for (i = 0; i < dots.length; i++) {{
                 dots[i].className = dots[i].className.replace("active", "");
-            }
+            }}
             slides[slideIndex-1].style.display = "block";  
             dots[slideIndex-1].className += " active";
-            }
+            }}
 
             var interval = setInterval(showSlides, 2500); // Change image every 2.5 seconds
 
             function pauseSlides(event)
-            {
+            {{
                 clearInterval(interval); // Clear the interval we set earlier
-            }
+            }}
             function resumeSlides(event)
-            {
+            {{
                 interval = setInterval(showSlides, 2500);
-            }
+            }}
             // Set up event listeners for the mySlides
             var mySlides = document.getElementsByClassName("mySlides");
-            for (i = 0; i < mySlides.length; i++) {
+            for (i = 0; i < mySlides.length; i++) {{
             mySlides[i].onmouseover = pauseSlides;
             mySlides[i].onmouseout = resumeSlides;
-            }
+            }}
             </script>
 
             </body>
