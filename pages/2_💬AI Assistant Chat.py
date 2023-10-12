@@ -22,12 +22,6 @@ local_css("style/styles_chat.css")
 pronoun = info['Pronoun']
 name = info['Name']
 
-# Initialize the chat history
-if "messages" not in st.session_state:
-    welcome_msg = f"Hi! I'm {name}'s AI Assistant, Buddy. How may I assist you today?"
-    st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
-   
- 
 # App sidebar
 with st.sidebar:
     st.markdown("""
@@ -58,6 +52,11 @@ with st.sidebar:
         )
 
     st.caption("© Made by Vicky Kuo 2023. All rights reserved.")
+
+# Initialize the chat history
+if "messages" not in st.session_state:
+    welcome_msg = f"Hi! I'm {name}'s AI Assistant, Buddy. How may I assist you today?"
+    st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
 
 with st.spinner("Initiating the AI assistant. Please hold..."):
     # Check for GPU availability and set the appropriate device for computation.
