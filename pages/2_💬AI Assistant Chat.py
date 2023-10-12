@@ -79,7 +79,7 @@ with st.spinner("Initiating the AI assistant. Please hold..."):
         global llm_hub, embeddings
         
         params = {
-            GenParams.MAX_NEW_TOKENS: 512, # The maximum number of tokens that the model can generate in a single run.
+            GenParams.MAX_NEW_TOKENS: 256, # The maximum number of tokens that the model can generate in a single run.
             GenParams.MIN_NEW_TOKENS: 1,   # The minimum number of tokens that the model should generate in a single run.
             GenParams.DECODING_METHOD: DecodingMethods.SAMPLE, # The method used by the model for decoding/generating new tokens. In this case, it uses the sampling method.
             GenParams.TEMPERATURE: 0.7,   # A parameter that controls the randomness of the token generation. A lower value makes the generation more deterministic, while a higher value introduces more randomness.
@@ -133,9 +133,9 @@ def ask_bot(user_query):
 
     global index
 
-    PROMPT_QUESTION = f"""You are Buddy, an AI assistant helping {name} in their job search by providing concise answer to recruiters. 
+    PROMPT_QUESTION = f"""You are Buddy, an AI assistant helping {name} to answer a recruiter's questions. 
+    You should keep answers succinct and without a starting "Buddy" or breakline.
     If unsure, admit it politely and direct recruiters to {name} for more info. 
-    Keep answers succinct and without a starting "Buddy" or breakline.
     
     Human: {input}
     """
