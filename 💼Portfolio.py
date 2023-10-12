@@ -1,16 +1,23 @@
+# import the Streamlit library
 import streamlit as st
 from streamlit_option_menu import option_menu
-from  PIL import Image
+from utils.constants import *
 
+# configure page settings
 st.set_page_config(page_title='Template' ,layout="wide",initial_sidebar_state="auto", page_icon='👧🏻') # always show the sidebar
 
+# load local CSS styles
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
         
 local_css("styles/styles_main.css")
-    
-# App Sidebar
+
+# get the variables from constants.py
+name = info['Resume']
+full_name = info['Full_Name']
+
+# app sidebar
 with st.sidebar:
     st.markdown("""
                 # Chat with my AI assistant
@@ -18,22 +25,22 @@ with st.sidebar:
     with st.expander("Click here to see FAQs"):
         st.info(
             """
-            - What are her strengths and weaknesses?
-            - What is her expected salary?
-            - What is her latest project?
-            - When can she start to work?
-            - Tell me about her professional background
-            - What is her skillset?
-            - What is her contact?
-            - What are her achievements?
+            - What are {name} strengths and weaknesses?
+            - What is {name} expected salary?
+            - What is {name} latest project?
+            - When can {name} start to work?
+            - Tell me about {name} professional background
+            - What is {name} skillset?
+            - What is {name} contact?
+            - What are {name} achievements?
             """
         )
         
-    st.caption("© Made by Vicky Kuo 2023. All rights reserved.")
+    st.caption("© Made by {full_name} 2023. All rights reserved.")
 
 import requests
 
-from utils.constants import *
+
 
 def hero(content1, content2):
     st.markdown(f'<h1 style="text-align:center;font-size:60px;border-radius:2%;">'
@@ -76,7 +83,8 @@ def change_button_color(widget_label, background_color='transparent'):
     components.html(f"{htmlstr}", height=0, width=0)
 
 change_button_color('Chat with My AI Assistant', '#0cc789') 
-            
+
+from  PIL import Image
 with col2:
     profile = Image.open("images/profile.png")
     st.image(profile, width=280)
