@@ -16,8 +16,18 @@ def local_css(file_name):
     with open(file_name) as f:
         st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
         
-local_css("styles/styles_chat.css")
+local_css("style/styles_chat.css")
 
+# Get the variables from constants.py
+pronoun = info['Pronoun']
+name = info['Name']
+
+# Initialize the chat history
+if "messages" not in st.session_state:
+    welcome_msg = f"Hi! I'm {name}'s AI Assistant, Buddy. How may I assist you today?"
+    st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
+   
+ 
 # App sidebar
 with st.sidebar:
     st.markdown("""
@@ -40,20 +50,14 @@ with st.sidebar:
     import json
     messages = st.session_state.messages
     if messages is not None:
-        col1, col2 = st.columns(2)  # Divide space into two columns
-        col2.download_button(
+        st.download_button(
             label="Download Chat",
             data=json.dumps(messages),
             file_name='chat.json',
             mime='json',
         )
-        
-        def clear_chat_history():
-            welcome_msg = f"Hi! I'm {name}'s AI assistant, Buddy. How may I assist you today?"
-            st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
-        col1.button('New Chat', on_click=clear_chat_history)
-        
-    st.caption(f"© Made by Vicky Kuo 2023. All rights reserved.")
+
+    st.caption("© Made by Vicky Kuo 2023. All rights reserved.")
 
 with st.spinner("Initiating the AI assistant. Please hold..."):
     # Check for GPU availability and set the appropriate device for computation.
@@ -71,7 +75,7 @@ with st.spinner("Initiating the AI assistant. Please hold..."):
         global llm_hub, embeddings
         
         params = {
-            GenParams.MAX_NEW_TOKENS: 512, # The maximum number of tokens that the model can generate in a single run.
+            GenParams.MAX_NEW_TOKENS: 1024, # The maximum number of tokens that the model can generate in a single run.
             GenParams.MIN_NEW_TOKENS: 1,   # The minimum number of tokens that the model should generate in a single run.
             GenParams.DECODING_METHOD: DecodingMethods.SAMPLE, # The method used by the model for decoding/generating new tokens. In this case, it uses the sampling method.
             GenParams.TEMPERATURE: 0.7,   # A parameter that controls the randomness of the token generation. A lower value makes the generation more deterministic, while a higher value introduces more randomness.
@@ -102,7 +106,7 @@ with st.spinner("Initiating the AI assistant. Please hold..."):
     init_llm()
     
     # load the file
-    documents = SimpleDirectoryReader(input_files=["bio.txt"]).load_data()
+    documents = SimpleDirectoryReader(input_files=["data.txt"]).load_data()
     
     # LLMPredictor: to generate the text response (Completion)
     llm_predictor = LLMPredictor(
@@ -111,7 +115,6 @@ with st.spinner("Initiating the AI assistant. Please hold..."):
                                     
     # Hugging Face models can be supported by using LangchainEmbedding to convert text to embedding vector	
     embed_model = LangchainEmbedding(embeddings)
-    #embed_model = LangchainEmbedding(HuggingFaceEmbeddings())
     
     # ServiceContext: to encapsulate the resources used to create indexes and run queries    
     service_context = ServiceContext.from_defaults(
@@ -125,31 +128,19 @@ def ask_bot(user_query):
 
     global index
 
-    PROMPT_QUESTION = f"""
-    You are Buddy, an AI assistant working for {name}.
-    Your task is to assist {name} by answering recruiters' questions on {pronoun} behalf, ensuring the communication is concise and constructive.
-    Always frame your responses to highlight {name} in a positive light.
-    If a question is beyond your knowledge, admit it with politeness, and guide recruiters on how to contact {name} directly for further information.
-    Unless explicitly asked about your identity, do not initiate your answers with "Buddy" or a newline.
-    
+    PROMPT_QUESTION = """You are Buddy, an AI assistant dedicated to assisting Vicky in her job search by providing recruiters with relevant information about her qualifications and achievements. 
+    Your goal is to support Vicky in presenting herself effectively to potential employers and promoting her candidacy for job opportunities.
+    If you do not know the answer, politely admit it and let recruiters know how to contact Vicky to get more information directly from her. 
+    Don't put "Buddy" or a breakline in the front of your answer.
     Human: {input}
     """
-
+    
     # query LlamaIndex and LLAMA_2_70B_CHAT for the AI's response
     output = index.as_query_engine().query(PROMPT_QUESTION.format(input=user_query))
     return output
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Get the variables from constants.py
-pronoun = info['Pronoun']
-name = info['Name']
-
-# Initialize the chat history
-if "messages" not in st.session_state:
-    welcome_msg = f"Hi! I'm {name}'s AI Assistant, Buddy. How may I assist you today?"
-    st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
-   
 # After the user enters a message, append that message to the message history
 if prompt := st.chat_input("Your question"): # Prompt for user input and save to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -159,7 +150,7 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
-# If last message is not from assistant, generate a new response
+# If the last message is not from the assistant, generate a new response
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("🤔 Thinking..."):
@@ -170,9 +161,9 @@ if st.session_state.messages[-1]["role"] != "assistant":
 
 # Suggested questions
 questions = [
-    f'What are {pronoun} strengths and weaknesses?',
-    f'What is {pronoun} expected salary?',
-    f'What is {pronoun} latest project?'
+    'What are her strengths and weaknesses?',
+    'What is her latest project?',
+    'When can she start to work?'
 ]
 
 def send_button_ques(question):
