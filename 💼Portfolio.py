@@ -52,7 +52,7 @@ with st.container():
     col1,col2 = st.columns([8,3])
 
 with col1:
-    hero(f"Hi, I'm {full_name}👋", {info["intro"]})
+    hero(f"Hi, I'm {full_name}👋", {info["Intro"]})
     st.write("")
     st.write(info['About'])
 
