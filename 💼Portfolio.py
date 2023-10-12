@@ -132,7 +132,7 @@ with st.container():
     with col1:
         st.subheader("👄 Coworker Endorsements")
         components.html(
-        """
+        f"""
         <!DOCTYPE html>
         <html>
         <head>
@@ -184,15 +184,15 @@ with st.container():
         <body>
             <div class="slideshow-container">
                 <div class="mySlides fade">
-                <img src="https://user-images.githubusercontent.com/90204593/238169843-12872392-f2f1-40a6-a353-c06a2fa602c5.png" style="width:100%">
+                <img src={endorsements["img1"]} style="width:100%">
                 </div>
 
                 <div class="mySlides fade">
-                <img src="https://user-images.githubusercontent.com/90204593/238171251-5f4c5597-84d4-4b4b-803c-afe74e739070.png" style="width:100%">
+                <img src={endorsements["img2"]} style="width:100%">
                 </div>
 
                 <div class="mySlides fade">
-                <img src="https://user-images.githubusercontent.com/90204593/238171242-53f7ceb3-1a71-4726-a7f5-67721419fef8.png" style="width:100%">
+                <img src={endorsements["img3"]} style="width:100%">
                 </div>
 
             </div>
