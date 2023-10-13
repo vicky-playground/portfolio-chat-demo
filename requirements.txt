@@ -11,3 +11,4 @@ langchain
 pydantic>=1.10.0
 streamlit-option-menu==0.1.2
 streamlit-extras
+torch==2.0.1
