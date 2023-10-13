@@ -3,7 +3,6 @@ import torch
 from utils.constants import *
 from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader, LLMPredictor, ServiceContext, LangchainEmbedding
 # Llamaindex also works with langchain framework to implement embeddings
-from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 from llama_index.prompts.prompts import SimpleInputPrompt
 from ibm_watson_machine_learning.foundation_models.extensions.langchain import WatsonxLLM
