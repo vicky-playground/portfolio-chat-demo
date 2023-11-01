@@ -20,6 +20,7 @@ local_css("styles/styles_chat.css")
 # Get the variables from constants.py
 pronoun = info['Pronoun']
 name = info['Name']
+subject = info['Subject']
 
 # Initialize the chat history
 if "messages" not in st.session_state:
@@ -37,7 +38,7 @@ with st.sidebar:
             - What are {pronoun} strengths and weaknesses?
             - What is {pronoun} expected salary?
             - What is {pronoun} latest project?
-            - When can {pronoun} start to work?
+            - When can {subject} start to work?
             - Tell me about {pronoun} professional background
             - What is {pronoun} skillset?
             - What is {pronoun} contact?
@@ -127,7 +128,7 @@ def ask_bot(user_query):
 
     global index
 
-    PROMPT_QUESTION = """You are Buddy, an AI assistant dedicated to assisting {name} in {pronoun} job search by providing recruiters with relevant information about her qualifications and achievements. 
+    PROMPT_QUESTION = """You are Buddy, an AI assistant dedicated to assisting {name} in {pronoun} job search by providing recruiters with relevant information about {pronoun} qualifications and achievements. 
     Your goal is to support {name} in presenting {pronoun}self effectively to potential employers and promoting {pronoun} candidacy for job opportunities.
     If you do not know the answer, politely admit it and let recruiters know how to contact {name} to get more information directly from {pronoun}. 
     Don't put "Buddy" or a breakline in the front of your answer.
@@ -160,9 +161,9 @@ if st.session_state.messages[-1]["role"] != "assistant":
 
 # Suggested questions
 questions = [
-    'What are her strengths and weaknesses?',
-    'What is her latest project?',
-    'When can she start to work?'
+    f'What are {pronoun} strengths and weaknesses?',
+    f'What is {pronoun} latest project?',
+    f'When can {subject} start to work?'
 ]
 
 def send_button_ques(question):
