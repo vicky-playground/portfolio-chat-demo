@@ -135,7 +135,7 @@ def ask_bot(user_query):
     """
     
     # query LlamaIndex and LLAMA_2_70B_CHAT for the AI's response
-    output = index.as_query_engine().query(PROMPT_QUESTION.format(input=user_query))
+    output = index.as_query_engine().query(PROMPT_QUESTION.format(name=name, pronoun=pronoun, input=user_query))
     return output
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
