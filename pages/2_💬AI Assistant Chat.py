@@ -21,6 +21,7 @@ local_css("styles/styles_chat.css")
 pronoun = info['Pronoun']
 name = info['Name']
 subject = info['Subject']
+full_name = info['Full_Name']
 
 # Initialize the chat history
 if "messages" not in st.session_state:
@@ -56,7 +57,7 @@ with st.sidebar:
             mime='json',
         )
 
-    st.caption("© Made by Vicky Kuo 2023. All rights reserved.")
+    st.caption(f"© Made by {full_name} 2023. All rights reserved.")
 
 # # Configure Azure OpenAI API
 with st.spinner("Initiating the AI assistant. Please hold..."):
