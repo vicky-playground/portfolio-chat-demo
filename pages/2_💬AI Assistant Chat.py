@@ -1,10 +1,8 @@
 import streamlit as st
 import torch
-from utils.constants import *
-from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader, LLMPredictor, ServiceContext, LangchainEmbedding
-# Llamaindex also works with langchain framework to implement embeddings
+from llama_index import (GPTVectorStoreIndex, SimpleDirectoryReader, LLMPredictor, 
+                         ServiceContext, LangchainEmbedding)
 from langchain.embeddings import HuggingFaceInstructEmbeddings
-from llama_index.prompts.prompts import SimpleInputPrompt
 from ibm_watson_machine_learning.foundation_models.extensions.langchain import WatsonxLLM
 from ibm_watson_machine_learning.foundation_models.utils.enums import ModelTypes, DecodingMethods
 from ibm_watson_machine_learning.metanames import GenTextParamsMetaNames as GenParams
@@ -59,7 +57,7 @@ with st.sidebar:
 
     st.caption(f"© Made by {full_name} 2023. All rights reserved.")
 
-# # Configure Azure OpenAI API
+
 with st.spinner("Initiating the AI assistant. Please hold..."):
     # Check for GPU availability and set the appropriate device for computation.
     DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
@@ -70,13 +68,13 @@ with st.spinner("Initiating the AI assistant. Please hold..."):
     
     Watsonx_API = "uvnQIfnjPk2Jpszy0hAvr80xCUAudclZsltCi3gYxAVu"
     Project_id= "177ab670-c7d0-4f34-894f-228297d644d9"
-    
+
     # Function to initialize the language model and its embeddings
     def init_llm():
         global llm_hub, embeddings
         
         params = {
-            GenParams.MAX_NEW_TOKENS: 1024, # The maximum number of tokens that the model can generate in a single run.
+            GenParams.MAX_NEW_TOKENS: 512, # The maximum number of tokens that the model can generate in a single run.
             GenParams.MIN_NEW_TOKENS: 1,   # The minimum number of tokens that the model should generate in a single run.
             GenParams.DECODING_METHOD: DecodingMethods.SAMPLE, # The method used by the model for decoding/generating new tokens. In this case, it uses the sampling method.
             GenParams.TEMPERATURE: 0.7,   # A parameter that controls the randomness of the token generation. A lower value makes the generation more deterministic, while a higher value introduces more randomness.
@@ -140,8 +138,6 @@ def ask_bot(user_query):
     output = index.as_query_engine().query(PROMPT_QUESTION.format(name=name, pronoun=pronoun, input=user_query))
     return output
 
-# ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 # After the user enters a message, append that message to the message history
 if prompt := st.chat_input("Your question"): # Prompt for user input and save to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -185,3 +181,5 @@ if st.session_state['disabled']==False:
         if n == 0:
             for q in questions:
                 button_ques = buttons.button(label=q, on_click=send_button_ques, args=[q], disabled=st.session_state.disabled)
+
+
